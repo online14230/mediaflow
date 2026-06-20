@@ -1,0 +1,128 @@
+{
+    "version": "3.0.9",
+    "server": {
+        "name": "MediaFlow",
+        "host": "0.0.0.0",
+        "port": 8123,
+        "debug": true,
+        "secret_key": "change-this-in-production"
+    },
+    "database": {
+        "path": "data/mediaflow.db",
+        "echo": false
+    },
+    "paths": {
+        "movies": "E:/mediastack/media/movies",
+        "tv_shows": "E:/mediastack/media/series",
+        "downloads": "E:/mediastack/downloads",
+        "logs": "logs",
+        "data": "data"
+    },
+    "downloader": {
+        "host": "http://localhost:8080",
+        "username": "admin",
+        "password": "adminadmin",
+        "max_concurrent": 5
+    },
+    "transmission": {
+        "host": "http://localhost:9091",
+        "username": "",
+        "password": ""
+    },
+    "youtube_api_key": "",
+    "naming": {
+        "movies": {
+            "file_format": "{title} ({year}){quality}{extension}",
+            "folder_format": "{title} ({year})"
+        },
+        "tv_shows": {
+            "episode_format": "{title} - S{season:02d}E{episode:02d} - {episode_title}{quality}{extension}",
+            "series_folder_format": "{title} ({year})",
+            "season_folder_format": "Season {season:02d}"
+        }
+    },
+    "quality": {
+        "default_profile": "1080p",
+        "profiles": {
+            "4k": {
+                "resolution": 2160,
+                "keywords": [
+                    "4K",
+                    "2160p"
+                ]
+            },
+            "1080p": {
+                "resolution": 1080,
+                "keywords": [
+                    "1080p",
+                    "FullHD"
+                ]
+            },
+            "720p": {
+                "resolution": 720,
+                "keywords": [
+                    "720p",
+                    "HD"
+                ]
+            }
+        }
+    },
+    "metadata": {
+        "providers": {
+            "tmdb": {
+                "enabled": true,
+                "api_key": "9d24b519716ae7815bf0fb2d96ccced5",
+                "language": "en-US"
+            }
+        }
+    },
+    "ui": {
+        "theme": "dark",
+        "items_per_page": 500,
+        "view_mode": "poster"
+    },
+    "renaming": {
+        "auto_rename": "false",
+        "preview_before_rename": "false",
+        "add_release_group": "false"
+    },
+    "logging": {
+        "level": "INFO"
+    },
+    "auto_create_folders": "true",
+    "auto_download_posters": "true",
+    "torrent_indexers": [
+        {
+            "name": "1337x",
+            "enabled": true,
+            "type": "torrent",
+            "base_url": "https://1337x.to",
+            "search_path": "/search/{query}/1/",
+            "api_type": "scrape"
+        },
+        {
+            "name": "The Pirate Bay",
+            "enabled": true,
+            "type": "torrent",
+            "base_url": "https://thepiratebay.org",
+            "search_path": "/search/{query}/0/99/0",
+            "api_type": "scrape"
+        },
+        {
+            "name": "YTS",
+            "enabled": true,
+            "type": "torrent",
+            "base_url": "https://yts.mx",
+            "search_path": "/api/v2/list_movies.json?query_term={query}",
+            "api_type": "json"
+        },
+        {
+            "name": "EZTV",
+            "enabled": true,
+            "type": "torrent",
+            "base_url": "https://eztv.re",
+            "search_path": "/api/get-torrents?imdb_id={query}",
+            "api_type": "json"
+        }
+    ]
+}
